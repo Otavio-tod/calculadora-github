@@ -25,37 +25,50 @@ float div(int a, int b)//função de divisão
 
 int main(void)
 {
-    printf("1 - Soma\n");
-    printf("2 - Subtracao\n");
-    printf("3 - Mutiplicacao\n");
-    printf("4 - Divisao\n");
-    int opcao;
-    printf("Escolha uma opcao: ");
-    scanf("%d", &opcao);
-    int num1, num2;
-    printf("Digite o primeiro numero: ");
-    scanf("%d", &num1);
-    printf("Digite o segundo numero: ");
-    scanf("%d", &num2);
-    if (opcao == 1)
+    int opcao = 0;
+
+    while (opcao != 5)
     {
-        // soma
-        int resultado = soma(num1, num2);  
-        printf("Resultado: %d\n", resultado);
+        printf("1 - Soma\n");
+        printf("2 - Subtracao\n");
+        printf("3 - Mutiplicacao\n");
+        printf("4 - Divisao\n");
+        printf("5 - Sair\n");
+        printf("Escolha uma opcao: ");
+        scanf("%d", &opcao);
+
+        if (opcao != 5)
+        {
+            int num1, num2;
+            printf("Digite o primeiro numero: ");
+            scanf("%d", &num1);
+            printf("Digite o segundo numero: ");
+            scanf("%d", &num2);
+
+            if (opcao == 1)
+            {
+                // soma
+                int resultado = soma(num1, num2);
+                printf("Resultado: %d\n", resultado);
+            }
+            else if (opcao == 2)
+            {
+                int resultado = subtracao(num1, num2);
+                printf("Resultado: %d\n", resultado);
+            }
+            else if (opcao == 3)
+            {
+                int resultado = mult(num1, num2);
+                printf("Resultado: %d\n", resultado);
+            }
+            else if (opcao == 4)
+            {
+                float resultado = div(num1, num2);
+                printf("Resultado: %f\n", resultado);
+            }
+        }
     }
-    else if (opcao == 2)
-    {
-        int resultado = subtracao(num1, num2);  
-        printf("Resultado: %d\n", resultado);
-    }
-    else if (opcao == 3)
-    {
-        int resultado = mult(num1, num2);  
-        printf("Resultado: %d\n", resultado);
-    }
-    else if (opcao == 4)
-    {
-        float resultado = div(num1, num2);  
-        printf("Resultado: %f\n", resultado);
-    }
+
+    printf("Saindo...\n");
+    return 0;
 }
