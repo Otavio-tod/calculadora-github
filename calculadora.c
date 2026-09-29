@@ -20,7 +20,7 @@ int mult(int a, int b) // função de multiplicação
 }
 float div(int a, int b) // função de divisão
 {
-    float div_valor = a / b;
+    float div_valor = (float) a / b;
     return div_valor;
 }
 int potencia(int base, int expoente)
