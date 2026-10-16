@@ -20,7 +20,7 @@ int mult(int a, int b) // função de multiplicação
 }
 float div(int a, int b) // função de divisão
 {
-    float div_valor = (float) a / b;
+    float div_valor = (float)a / b;
     return div_valor;
 }
 int potencia(int base, int expoente)
@@ -33,30 +33,37 @@ int potencia(int base, int expoente)
     return resultado;
 }
 
+float historico[10];
+int total_operacoes = 0;
+
 int main(void)
 {
     int opcao = 0;
 
-    while (opcao != 7)
+    while (opcao != 8)
     {
+        float resultado_geral = 0;
+
         printf("1 - Soma\n");
         printf("2 - Subtracao\n");
         printf("3 - Mutiplicacao\n");
         printf("4 - Divisao\n");
         printf("5 - Raiz Quadrada\n");
         printf("6 - Potencia\n");
-        printf("7 - Sair\n");
+        printf("7 - Historico\n");
+        printf("8 - Sair\n");
         printf("Escolha uma opcao: ");
         if (scanf("%d", &opcao) != 1)
         {
             printf("\n[ERRO] Entrada invalida! Digite apenas numeros.\n");
             while (getchar() != '\n')
                 ;
+
             opcao = 0;
             continue;
         }
 
-        if (opcao != 7)
+        if (opcao != 8)
         {
             if (opcao == 1)
             {
@@ -66,8 +73,8 @@ int main(void)
                 printf("Digite o segundo numero: ");
                 scanf("%d", &num2);
                 // soma
-                int resultado = soma(num1, num2);
-                printf("Resultado: %d\n", resultado);
+                resultado_geral = soma(num1, num2);
+                printf("Resultado: %.2f\n", resultado_geral);
             }
             else if (opcao == 2)
             {
@@ -76,8 +83,8 @@ int main(void)
                 scanf("%d", &num1);
                 printf("Digite o segundo numero: ");
                 scanf("%d", &num2);
-                int resultado = subtracao(num1, num2);
-                printf("Resultado: %d\n", resultado);
+                resultado_geral = subtracao(num1, num2);
+                printf("Resultado: %.2f\n", resultado_geral);
             }
             else if (opcao == 3)
             {
@@ -86,8 +93,8 @@ int main(void)
                 scanf("%d", &num1);
                 printf("Digite o segundo numero: ");
                 scanf("%d", &num2);
-                int resultado = mult(num1, num2);
-                printf("Resultado: %d\n", resultado);
+                resultado_geral = mult(num1, num2);
+                printf("Resultado: %.2f\n", resultado_geral);
             }
             else if (opcao == 4)
             {
@@ -96,16 +103,16 @@ int main(void)
                 scanf("%d", &num1);
                 printf("Digite o segundo numero: ");
                 scanf("%d", &num2);
-                float resultado = div(num1, num2);
-                printf("Resultado: %f\n", resultado);
+                resultado_geral = div(num1, num2);
+                printf("Resultado: %.2f\n", resultado_geral);
             }
             else if (opcao == 5)
             {
                 int num1;
                 printf("Digite o numero: ");
                 scanf("%d", &num1);
-                float resultado = sqrt(num1);
-                printf("Resultado: %f\n", resultado);
+                resultado_geral = sqrt(num1);
+                printf("Resultado: %.2f\n", resultado_geral);
             }
             else if (opcao == 6)
             {
@@ -114,12 +121,42 @@ int main(void)
                 scanf("%d", &num1);
                 printf("Digite o segundo numero: ");
                 scanf("%d", &num2);
-                int resultado = potencia(num1, num2);
-                printf("Resultado: %d\n", resultado);
+                resultado_geral = potencia(num1, num2);
+                printf("Resultado: %.2f\n", resultado_geral);
+            }
+            // --- 1\. SALVAR NO HISTÓRICO (Operações 1 a 6) ---
+            if (opcao >= 1 && opcao <= 6)
+            {
+                if (total_operacoes < 10)
+                {
+                    historico[total_operacoes] = resultado_geral;
+                    total_operacoes++;
+                }
+                else
+                {
+                    printf("\n[AVISO] Historico cheio! Arquivo nao salvo.\n");
+                }
+            }
+            // --- 2\. EXIBIR O HISTÓRICO (Opção 7) ---
+            else if (opcao == 7)
+            {
+                printf("\n=== HISTORICO DE RESULTADOS ===\n");
+                if (total_operacoes == 0)
+                {
+                    printf("Nenhum resultado registrado ainda.\n");
+                }
+                else
+                {
+                    for (int i = 0; i < total_operacoes; i++)
+                    {
+                        printf("%d. Resultado: %.2f\n", i + 1, historico[i]);
+                    }
+                }
+                printf("===============================\n");
             }
         }
     }
 
-    printf("Saindo...\n");
-    return 0;
-}
+            printf("Saindo...\n");
+            return 0;
+        }
