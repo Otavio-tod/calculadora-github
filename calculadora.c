@@ -103,8 +103,15 @@ int main(void)
                 scanf("%d", &num1);
                 printf("Digite o segundo numero: ");
                 scanf("%d", &num2);
-                resultado_geral = div(num1, num2);
-                printf("Resultado: %.2f\n", resultado_geral);
+                if (num2 == 0)
+                {
+                    printf("\nERRO, NAO E POSSIVEL DIVIDIR POR 0\n");
+                }
+                else
+                {
+                    resultado_geral = div(num1, num2);
+                    printf("Resultado: %.2f\n", resultado_geral);
+                }
             }
             else if (opcao == 5)
             {
@@ -157,6 +164,6 @@ int main(void)
         }
     }
 
-            printf("Saindo...\n");
-            return 0;
-        }
+    printf("Saindo...\n");
+    return 0;
+}
