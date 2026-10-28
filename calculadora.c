@@ -56,8 +56,7 @@ int main(void)
         if (scanf("%d", &opcao) != 1)
         {
             printf("\n[ERRO] Entrada invalida! Digite apenas numeros.\n");
-            while (getchar() != '\n')
-                ;
+            while (getchar() != '\n');
 
             opcao = 0;
             continue;
