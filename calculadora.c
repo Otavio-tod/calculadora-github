@@ -118,8 +118,15 @@ int main(void)
                 int num1;
                 printf("Digite o numero: ");
                 scanf("%d", &num1);
-                resultado_geral = sqrt(num1);
-                printf("Resultado: %.2f\n", resultado_geral);
+                if (num1 < 0)
+                {
+                    printf("\nERRO, NAO EXISTE RAIZ QUADRADA REAL DE NUMERO NEGATIVO\n");
+                }
+                else
+                {
+                    resultado_geral = sqrt(num1);
+                    printf("Resultado: %.2f\n", resultado_geral);
+                }
             }
             else if (opcao == 6)
             {
