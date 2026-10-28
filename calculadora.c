@@ -13,12 +13,12 @@ int subtracao(int a, int b) // função de subtração
     return sub_valor;
 }
 
-int mult(int a, int b) // função de multiplicação
+int multiplicar(int a, int b) // função de multiplicação
 {
     int mult_valor = a * b;
     return mult_valor;
 }
-float div(int a, int b) // função de divisão
+float dividir(int a, int b) // função de divisão
 {
     float div_valor = (float)a / b;
     return div_valor;
@@ -93,7 +93,7 @@ int main(void)
                 scanf("%d", &num1);
                 printf("Digite o segundo numero: ");
                 scanf("%d", &num2);
-                resultado_geral = mult(num1, num2);
+                resultado_geral = multiplicar(num1, num2);
                 printf("Resultado: %.2f\n", resultado_geral);
             }
             else if (opcao == 4)
@@ -109,7 +109,7 @@ int main(void)
                 }
                 else
                 {
-                    resultado_geral = div(num1, num2);
+                    resultado_geral = dividir(num1, num2);
                     printf("Resultado: %.2f\n", resultado_geral);
                 }
             }
