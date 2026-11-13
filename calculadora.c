@@ -43,10 +43,11 @@ int main(void)
     while (opcao != 8)
     {
         float resultado_geral = 0;
+        int deu_certo = 1;
 
         printf("1 - Soma\n");
         printf("2 - Subtracao\n");
-        printf("3 - Mutiplicacao\n");
+        printf("3 - Multiplicacao\n");
         printf("4 - Divisao\n");
         printf("5 - Raiz Quadrada\n");
         printf("6 - Potencia\n");
@@ -104,6 +105,7 @@ int main(void)
                 scanf("%d", &num2);
                 if (num2 == 0)
                 {
+                    deu_certo = 0;
                     printf("\nERRO, NAO E POSSIVEL DIVIDIR POR 0\n");
                 }
                 else
@@ -119,6 +121,7 @@ int main(void)
                 scanf("%d", &num1);
                 if (num1 < 0)
                 {
+                     deu_certo = 0;
                     printf("\nERRO, NAO EXISTE RAIZ QUADRADA REAL DE NUMERO NEGATIVO\n");
                 }
                 else
@@ -138,7 +141,7 @@ int main(void)
                 printf("Resultado: %.2f\n", resultado_geral);
             }
             // --- 1\. SALVAR NO HISTÓRICO (Operações 1 a 6) ---
-            if (opcao >= 1 && opcao <= 6)
+            if (opcao >= 1 && opcao <= 6 && deu_certo == 1)
             {
                 if (total_operacoes < 10)
                 {
@@ -147,7 +150,7 @@ int main(void)
                 }
                 else
                 {
-                    printf("\n[AVISO] Historico cheio! Arquivo nao salvo.\n");
+                    printf("\n[AVISO] Historico cheio! Resultado nao salvo.\n");
                 }
             }
             // --- 2\. EXIBIR O HISTÓRICO (Opção 7) ---
