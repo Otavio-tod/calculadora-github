@@ -33,6 +33,15 @@ int potencia(int base, int expoente)
     return resultado;
 }
 
+void ler_numero(int *destino)
+{
+    while (scanf("%d", destino) != 1)
+    {
+        printf("\n[ERRO] Entrada invalida! Digite apenas numeros.\n");
+        while (getchar() != '\n');
+        printf("Tente de novo: ");
+    }
+}
 float historico[10];
 int total_operacoes = 0;
 
@@ -69,9 +78,9 @@ int main(void)
             {
                 int num1, num2;
                 printf("Digite o primeiro numero: ");
-                scanf("%d", &num1);
+                ler_numero(&num1);
                 printf("Digite o segundo numero: ");
-                scanf("%d", &num2);
+                ler_numero(&num2);
                 // soma
                 resultado_geral = soma(num1, num2);
                 printf("Resultado: %.2f\n", resultado_geral);
@@ -80,9 +89,9 @@ int main(void)
             {
                 int num1, num2;
                 printf("Digite o primeiro numero: ");
-                scanf("%d", &num1);
+                ler_numero(&num1);
                 printf("Digite o segundo numero: ");
-                scanf("%d", &num2);
+                ler_numero(&num2);
                 resultado_geral = subtracao(num1, num2);
                 printf("Resultado: %.2f\n", resultado_geral);
             }
@@ -90,9 +99,9 @@ int main(void)
             {
                 int num1, num2;
                 printf("Digite o primeiro numero: ");
-                scanf("%d", &num1);
+                ler_numero(&num1);
                 printf("Digite o segundo numero: ");
-                scanf("%d", &num2);
+                ler_numero(&num2);
                 resultado_geral = multiplicar(num1, num2);
                 printf("Resultado: %.2f\n", resultado_geral);
             }
@@ -100,9 +109,9 @@ int main(void)
             {
                 int num1, num2;
                 printf("Digite o primeiro numero: ");
-                scanf("%d", &num1);
+                ler_numero(&num1);
                 printf("Digite o segundo numero: ");
-                scanf("%d", &num2);
+                ler_numero(&num2);
                 if (num2 == 0)
                 {
                     deu_certo = 0;
@@ -118,7 +127,7 @@ int main(void)
             {
                 int num1;
                 printf("Digite o numero: ");
-                scanf("%d", &num1);
+                ler_numero(&num1);
                 if (num1 < 0)
                 {
                      deu_certo = 0;
@@ -134,9 +143,9 @@ int main(void)
             {
                 int num1, num2;
                 printf("Digite o primeiro numero: ");
-                scanf("%d", &num1);
+                ler_numero(&num1);
                 printf("Digite o segundo numero: ");
-                scanf("%d", &num2);
+                ler_numero(&num2);
                 resultado_geral = potencia(num1, num2);
                 printf("Resultado: %.2f\n", resultado_geral);
             }
